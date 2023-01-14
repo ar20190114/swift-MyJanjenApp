@@ -8,14 +8,56 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var answerNumber: Int = 0
+    
     var body: some View {
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            
+            Spacer()
+            
+            if answerNumber == 0 {
+                Text("ジャンケンをします")
+                    .padding(.bottom)
+            } else if answerNumber == 1 {
+                Image("gu")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                Text("グー")
+                    .padding(.bottom)
+            } else if answerNumber == 2 {
+                Image("choki")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                Text("チョキ")
+                    .padding(.bottom)
+            } else {
+                Image("pa")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                
+                Text("パー")
+                    .padding(.bottom)
+            }
+            
+            Button("ジャンケンをする!") {
+                answerNumber = Int.random(in: 1...3)
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 100)
+            .font(.title)
+            .background(Color.pink)
+            .foregroundColor(Color.white)
         }
-        .padding()
     }
 }
 
@@ -24,3 +66,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
